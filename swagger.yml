@@ -1,0 +1,91 @@
+openapi: '3.0.2'
+info:
+  title: API Title
+  version: '1.0'
+servers:
+  - url: http://localhost:3000/api
+    description: Local server
+paths:
+  /user:
+    get:
+      description: 'Get all users'
+      responses:
+        '200':
+          description: OK
+
+    post:
+      description: 'Create a new user'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                uname:
+                  type: string
+                password:
+                  type: string
+                role:
+                  type: string
+              required:
+                - uname
+                - password
+      
+      responses:
+        '200':
+          description: OK
+    
+  /user/64c2789c1401c2d8a66fcb18:
+    get:
+      description: 'Get a user by id'
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: OK
+
+    patch:
+      description: 'Update a user by id'
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                uname:
+                  type: string
+                password:
+                  type: string
+                role:
+                  type: string
+              required:
+                - uname
+                - password
+      responses:
+        '200':
+          description: OK
+
+    delete:
+      description: 'Delete a user by id'
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: OK
+
+    
+  
